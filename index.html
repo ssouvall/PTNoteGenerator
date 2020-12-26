@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>PT Note Generator</title>
+        <link href="style.css" rel="stylesheet"></link>
+    </head>
+    <body>
+        <h1>Welcome to the PT Note Generator!</h1>
+        
+            <form class="soap-note-section">
+
+                <h3>Subjective</h3>
+
+                    <div class="soap-note-sub">
+
+                    <p>1. How did the patient tolerate the previous treatment? (select all that apply)</p>
+                    
+                        <input type="radio" id="treatment-well" name="treatment-well" value="good" onchange="good()">
+                        <label for="treatment-well">Good/No Adverse Effects</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="improved" name="improved" value="improved" onchange="symptomImprovement()">
+                        <label for="improved">Improved Symptoms</lable>
+                        <select name="sx-percent" id="sx-percent" onchange="symptomPercent(this.value)">
+                            <option value="prc">(percentage)</option>
+                            <option value="10%">10%</option>
+                            <option value="20%">20%</option>
+                            <option value="30%">30%</option>
+                            <option value="40%">40%</option>
+                            <option value="50%">50%</option>
+                            <option value="60%">60%</option>
+                            <option value="70%">70%</option>
+                            <option value="80%">80%</option>
+                            <option value="90%">90%</option>
+                            <option value="100%">100%</option>  
+                        </select>
+                        <br>
+                        <br>
+                        <input type="radio" id="improved-motion" name="improved-motion" value="improved-motion" onchange="motionImprovement()">
+                        <label for="improved-motion">Improved Range of Motion</label>
+                        <select name="side" id="side" onchange="motionImprovementSide(this.value)">
+                            <option value="side">(Side)</option>
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                            <option value="bilateral">Bilateral</option>
+                        </select>
+                        <select name="body-region" id="body-region" onchange="motionImprovementPart(this.value)">
+                            <option value="body-region">(Body Region)</option>
+                            <option value="head">Head</option>
+                            <option value="neck">Neck</option>
+                            <option value="shoulder">Shoulder</option>
+                            <option value="chest">Chest</option>
+                            <option value="abdomen">Abdomen</option>
+                            <option value="tspine">Thoracic Spine</option>
+                            <option value="lspine">Lumbar Spine</option>
+                            <option value="hip">Hip</option>
+                            <option value="thigh">Thigh</option>
+                            <option value="buttock">Buttock</option>
+                            <option value="knee">Knee</option>    
+                            <option value="lower-leg">Lower Leg</option>  
+                            <option value="calf">Calf</option>  
+                            <option value="ankle">Ankle</option> 
+                            <option value="foot">Foot</option>   
+                        </select>
+                        <select name="motion" id="motion" onchange="motionImprovementMotion(this.value)">
+                            <option value="motion">(Motion)</option>
+                            <option value="flexion">Flexion</option>
+                            <option value="extension">Extension</option>
+                            <option value="abduction">ABduction</option>
+                            <option value="adduction">Adduction</option>
+                            <option value="er">External Rotation</option>
+                            <option value="ir">Internal Rotation</option>
+                            <option value="rotation">Rotation</option>
+                            <option value="sidebend">Sidebending</option>
+                            <option value="dorsiflexion">Dorsiflexion</option>
+                            <option value="plantarflexion">Plantarflexion</option>
+                            <option value="eversion">Eversion</option>    
+                            <option value="inversion">Inversion</option>    
+                        </select>
+                        <br>
+                        <br>
+                        <input type="radio" id="improved-tone" name="improved-tone" value="improved-tone" onchange="toneImprovement()">
+                        <label for="improved-tone">Improved Muscle Tone</label>
+                        <select name="muscle" id="muscle" onchange="toneImprovementMuscle(this.value)">
+                            <option value="muscle">(Muscle)</option>
+                            <option value="cps">Cervical Paraspinals</option>
+                            <option value="scalenes">Scalenes</option>
+                            <option value="scm">SCM</option>
+                            <option value="pecs">Pectorals</option>
+                            <option value="upper-trap">Upper Traps</option>
+                            <option value="deltoids">Deltoid</option>    
+                            <option value="bicep">Bicep</option>
+                            <option value="tricep">Tricep</option>    
+                            <option value="wrist-extensors">Wrist Extensors</option>
+                            <option value="wrist-flexors">Wrist Flexors</option>
+                            <option value="tps">Thoracic Paraspinals</option>
+                            <option value="lps">Lumbar Paraspinals</option>
+                            <option value="psoas">Psoas</option>
+                            <option value="ql">Quadratus Lumborum</option>
+                            <option value="piriformis">Piriformis</option>
+                            <option value="tfl">TFL</option>    
+                            <option value="quads">Quads</option>
+                            <option value="hamstrings">Hamstrings</option>
+                            <option value="popliteus">Popliteus</option>    
+                            <option value="gastroc-soleus">Gastroc/Soleus</option> 
+                            <option value="tibant">Tibialis Anterior</option>
+                            <option value="tibpost">Tibialis Posterior</option>    
+                            <option value="peroneals">Peroneals</option>    
+                            <option value="foot-int">Foot Intrinsics</option>  
+                        </select>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="radio" id="improved-activity" name="improved-activity" value="improved-activity" onchange="improvedActivity()">
+                        <label for="improved-activity">Able to do <input type="text" id="subj-activity" name="subj-activity" placeholder="type activity here" onchange="specificActivity(this.value)"> better</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="no-change" name="no-change" value="no-change" onchange="noChange()">
+                        <label for="no-change">No change/same</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="stronger" name="stronger" value="stronger" onchange="subjective.responses.strong()">
+                        <label for="stronger">Feeling stronger</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="inc-pain" name="inc-pain" value="inc-pain" onchange="painUp()">
+                        <label for="inc-pain">Feeling increased pain</label>
+                        <select name="inc-pain-rating" id="inc-pain-rating" onchange="painRating(this.value)">
+                            <option value="rate">(Rating)</option>
+                            <option value="0">0/10</option>
+                            <option value="1">1/10</option>
+                            <option value="2">2/10</option>
+                            <option value="3">3/10</option>
+                            <option value="4">4/10</option>
+                            <option value="5">5/10</option>    
+                            <option value="6">6/10</option>
+                            <option value="7">7/10</option>    
+                            <option value="8">8/10</option>
+                            <option value="9">9/10</option>
+                            <option value="10">10/10</option> 
+                        </select>
+                        <select name="pain-desc" id="pain-desc" onchange="painDescription(this.value)">
+                            <option value="description">Description</option>
+                            <option value="sharp">Sharp</option>
+                            <option value="aching">Aching</option>
+                            <option value="burning">Burning</option>
+                            <option value="nt">Numb/tingling</option>
+                            <option value="stinging">Stinging</option> 
+                        </select>
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="dec-pain" name="dec-pain" value="dec-pain" onchange="decreasedPain()">
+                        <label for="dec-pain">Feeling Decreased Pain</label>
+                        <select name="pn-percent" id="pn-percent" onchange="painPercent(this.value)">
+                            <option value="prcp">(percentage)</option>
+                            <option value="10p">10%</option>
+                            <option value="20p">20%</option>
+                            <option value="30p">30%</option>
+                            <option value="40p">40%</option>
+                            <option value="50p">50%</option>
+                            <option value="60p">60%</option>
+                            <option value="70p">70%</option>
+                            <option value="80p">80%</option>
+                            <option value="90p">90%</option>
+                            <option value="100p">100%</option>  
+                        </select>
+                    
+                        <br>
+                        <br>
+                        
+                        <label for="other">Other</label>
+                        <input type="text" id="other" name="other" placeholder="other" onchange="subjective.responses.other(this.value)">
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <br>
+                        <br>
+
+                    <p>2. What is the patient's current pain level?</p>
+                    
+                        <select name="pain-rating" id="pain-rating" onchange="ratePain(this.value)">
+                            <option value="ratep">(Pain Rating)</option>
+                            <option value="0p">0/10</option>
+                            <option value="1p">1/10</option>
+                            <option value="2p">2/10</option>
+                            <option value="3p">3/10</option>
+                            <option value="4p">4/10</option>
+                            <option value="5p">5/10</option>    
+                            <option value="6p">6/10</option>
+                            <option value="7p">7/10</option>    
+                            <option value="8p">8/10</option>
+                            <option value="9p">9/10</option>
+                            <option value="10p">10/10</option> 
+                        </select>
+                        <select name="pain-desc1" id="pain-desc1" onchange="painDescribe(this.value)">
+                            <option value="description1">(Description)</option>
+                            <option value="sharp1">Sharp</option>
+                            <option value="aching1">Aching</option>
+                            <option value="burning1">Burning</option>
+                            <option value="nt1">Numb/tingling</option>
+                            <option value="stinging1">Stinging</option> 
+                        </select>
+                        <select name="sidep" id="sidep" onchange="painSide(this.value)">
+                            <option value="sidep">(Side)</option>
+                            <option value="leftp">Left</option>
+                            <option value="rightp">Right</option>
+                            <option value="bilateralp">Bilateral</option>
+                        </select>
+                        <select name="body-regionp" id="body-regionp" onchange="painRegion(this.value)">
+                            <option value="body-regionp">(Location)</option>
+                            <option value="headp">Head</option>
+                            <option value="neckp">Neck</option>
+                            <option value="shoulderp">Shoulder</option>
+                            <option value="chestp">Chest</option>
+                            <option value="abdomenp">Abdomen</option>
+                            <option value="tspinep">Thoracic Spine</option>
+                            <option value="lspinep">Lumbar Spine</option>
+                            <option value="hipp">Hip</option>
+                            <option value="thighp">Thigh</option>
+                            <option value="buttockp">Buttock</option>
+                            <option value="kneep">Knee</option>    
+                            <option value="lower-legp">Lower Leg</option>  
+                            <option value="calfp">Calf</option>  
+                            <option value="anklep">Ankle</option> 
+                            <option value="footp">Foot</option>   
+                        </select>
+                        
+                        <br>
+                        <br>
+
+                        <label for="agg">Aggravating/Easing Factors</label>
+                        <input type="text" id="agg" name="agg" placeholder="agg" onchange="aggravation(this.value)">
+                        
+                        <br>
+                        <br>
+
+                        <label for="other1">Other Information</label>
+                        <input type="text" id="other1" name="other1" placeholder="type here" onchange="other(this.value)">
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <br>
+                        <br>
+
+                    <p>3. What new events have occurred since last treatment? (Check all that apply)</p>
+                    
+                        <input type="radio" id="fall" name="fall" value="fall" onchange="subjective.events.fall.yesFall()">
+                        <label for="fall">Fall</label>
+                        <label for="describe-fall">Description</label>
+                        <input type="text" id="describe-fall" name="describe-fall" placeholder="type here" onchange="subjective.events.fall.description(this.value)">
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="rtrn-dr" name="rtrn-dr" value="rtrn-dr" onchange="subjective.events.doctorFollowUp.followUpDr()">
+                        <label for="rtrn-dr">Return to Doctor</label>
+                        <label for="describe-dr">Description</label>
+                        <input type="text" id="describe-dr" name="describe-dr" placeholder="type here" onchange="subjective.events.doctorFollowUp.visitDescribe(this.value)">
+                        <label for="other-dr">Other (procedures, new orders, etc)</label>
+                        <input type="text" id="other-dr" name="other-dr" placeholder="type here" onchange="subjective.events.doctorFollowUp.other(this.value)">
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="sick" name="sick" value="sick" onchange="subjective.events.sick.wasSick()">
+                        <label for="sick">Got sick</label>
+                        <label for="sick-descrip">Description</label>
+                        <input type="text" id="sick-descrip" name="sick-descrip" placeholder="type here" onchange="subjective.events.sick.descSymp(this.value)">
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="overdone-ex" name="overdone-ex" value="overdone-ex" onchange="subjective.events.overdoneHEP()">
+                        <label for="overdone-ex">Overdid it with HEP</label>
+                        <label for="ex">Exercise</label>
+                        <input type="text" id="ex" name="ex" placeholder="type here" onchange="subjective.events.overdoneExercise(this.value)">
+                        
+                        <br>
+                        <br>
+
+                        <input type="radio" id="overdone-act" name="overdone-act" value="overdone-act">
+                        <label for="overdone-act">Overdid it with activity</label>
+                        <label for="act">Activity</label>
+                        <input type="text" id="act" name="act" placeholder="type here" onchange="subjective.events.overdoneActivity(this.value)">
+                        
+                        <br>
+                        <br>
+                        
+                        <label for="other-act">Did new activity</label>
+                        <input type="text" id="other-act" name="other-act" placeholder="type here" onchange="subjective.events.didActivity.activity(this.value)">
+                        <label for="resp">Response</label>
+                        <input type="text" id="resp" name="resp" placeholder="type here" onchange="subjective.events.didActivity.response(this.value)">
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <br>
+                        <br>
+
+                    <p>4. How does the patient feel they are progressing?</p>
+
+                        <label for="helping">Is PT helping?</label>
+                        <input type="radio" id="yes-a-lot-help" name="yes-a-lot-help" value="yes-a-lot-help" onchange="subjective.recovery.ptHelping(0)">
+                        <label for="yes-a-lot-help">Yes, a lot!</label>
+                        <input type="radio" id="yes-help" name="yes-help" value="yes-help" onchange="subjective.recovery.ptHelping(1)">
+                        <label for="yes-help">Yes</label>
+                        <input type="radio" id="maybe-help" name="maybe-help" value="maybe-help" onchange="subjective.recovery.ptHelping(2)">
+                        <label for="maybe-help">Maybe</label>
+                        <input type="radio" id="no-help" name="no-help" value="no-help" onchange="subjective.recovery.ptHelping(3)">
+                        <label for="no-help">No</label>
+                        <input type="radio" id="unsure-help" name="unsure-help" value="unsure-help" onchange="subjective.recovery.ptHelping(4)">
+                        <label for="unsure-help">Not sure</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="prog-well" name="prog-well" value="prog-well" onchange="subjective.recovery.progressResponse(0)">
+                        <label for="prog-well">Progressing well</label>
+
+                        <br>
+                        <br>
+                        
+                        <input type="radio" id="balance-imp" name="balance-imp" value="balance-imp" onchange="subjective.recovery.progressResponse(4)">
+                        <label for="balance-imp">Improved balance</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="dec-fear" name="dec-fear" value="dec-fear" onchange="subjective.recovery.progressResponse(8)">
+                        <label for="dec-fear">Decreased fear of falling</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="less-pain" name="less-pain" value="less-pain" onchange="subjective.recovery.progressResponse(1)">
+                        <label for="less-pain">Decreased pain</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="more-pain" name="more-pain" value="more-pain" onchange="subjective.recovery.progressResponse(2)">
+                        <label for="more-pain">Increased pain</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="same-pain" name="same-pain" value="same-pain" onchange="subjective.recovery.progressResponse(3)">
+                        <label for="same-fear">Pain staying the same</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="strong" name="strong" value="strong" onchange="subjective.recovery.progressResponse(5)">
+                        <label for="strong">Feeling stronger</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="less-nt" name="less-nt" value="less-nt" onchange="subjective.recovery.progressResponse(6)">
+                        <label for="less-nt">Decreased numbness/tingling</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="more-nt" name="more-nt" value="more-nt" onchange="subjective.recovery.progressResponse(7)">
+                        <label for="more-nt">Increased numbness/tingling</label>
+
+                        <br>
+                        <br>
+
+                        <label for="ret-act">Return to</label>
+                        <input type="text" id="ret-act" name="ret-act" placeholder="activity (type here)" onchange="subjective.recovery.returnAct(this.value)">
+
+                        <br>
+                        <br>
+
+                        <label for="unable-act">Still unable to do</label>
+                        <input type="text" id="unable-act" name="unable-act" placeholder="activity (type here)" onchange="subjective.recovery.stillUnable(this.value)">
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <br>
+                        <br>
+                        
+                    <p>5. How is the patient doing with their HEP?</p>
+
+                        <label for="hep-freq">Frequency since last treatment:</label>
+                        <select name="hep-freq" id="hep-freq" onchange="subjective.hep.getHep(this.value)">
+                            <option value="hep-freq-select">(Frequency)</option>
+                            <option value="daily">Daily</option> 
+                            <option value="every-other-day">Every other day</option> 
+                            <option value="couple-times">A couple times</option>
+                            <option value="once">Once</option>
+                            <option value="no-hep">None</option> 
+                        </select>
+                    
+                    </div>
+
+            </form>
+
+            <form class="soap-note-section">
+
+                <h3>Objective</h3>
+
+                    <div class="soap-note-sub">
+
+                        <label for="palpation">Tenderness to Palpation:</label>
+                        <select name="palpation" id="palpation">
+                            <option value="palp-select">(Tenderness to palpation)</option>
+                            <option value="0">0/4</option> 
+                            <option value="1">1/4</option> 
+                            <option value="2">2/4</option>
+                            <option value="3">3/4</option>
+                            <option value="4">4/4</option> 
+                        </select>
+
+                    </div>
+            
+            </form>
+
+            <form class="soap-note-section">
+
+                <h3>Assessment</h3>
+
+                    <div class="soap-note-sub">
+
+                        <p>1. What stage of recovery is the patient in?</p>
+
+                            <label for="stage-recovery">Select stage:</label>
+                            <select name="stage-recovery" id="stage-recovery" onchange="assessment.stage(this.value)">
+                                <option value="recovery-select">(recovery stage)</option>
+                                <option value="acute">Acute</option> 
+                                <option value="subacute">Subacute</option> 
+                                <option value="chronic">Chronic</option>
+                                <option value="maximum-protection">Maximum protection</option>
+                                <option value="moderate-protection">Moderate protection</option> 
+                                <option value="return-to-function">Return to function</option>
+                                <option value="return-to-sport">Return to sport</option>
+                                <option value="return-to-work">Return to work</option> 
+                            </select>
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <p>2. How did the patient tolerate treatment?</p>
+
+                        <input type="radio" id="assess-verygood" name="assess-verygood" value="assess-verygood" onchange="assessment.tolerance(0)">
+                        <label for="assess-verygood">Very well</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="assess-good" name="assess-good" value="assess-good" onchange="assessment.tolerance(1)">
+                        <label for="assess-good">Good</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="fair" name="fair" value="fair" onchange="assessment.tolerance(2)">
+                        <label for="same-fear">Fair</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="poorly" name="poorly" value="poorly" onchange="assessment.tolerance(3)">
+                        <label for="poorly">Poor</label>
+
+                        <br>
+                        <br>
+
+                        <label for="reason">Reason:</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="no-adverse" name="no-adverse" value="no-adverse" onchange="assessment.reason(0)">
+                        <label for="no-adverse">No adverse effects</label>
+
+                        <br>
+                        <br>
+                        
+                        <input type="radio" id="more-pain" name="more-pain" value="more-pain" onchange="assessment.reason(1)">
+                        <label for="more-pain">Increased symptoms</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="less-pain" name="less-pain" value="less-pain" onchange="assessment.reason(2)">
+                        <label for="less-pain">Decreased symptoms</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="imp-rom" name="imp-rom" value="imp-rom" onchange="assessment.reason(9)">
+                        <label for="imp-rom">Improved ROM post-treatment</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="dec-ttp" name="dec-ttp" value="dec-ttp" onchange="assessment.reason(4)">
+                        <label for="dec-ttp">Decreased tenderness to palpation to affected area</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="dec-mtone" name="dec-mtone" value="dec-mtone" onchange="assessment.reason(5)">
+                        <label for="dec-mtone">Decreased muscle tone to affected area</label>
+
+                        <br>
+                        <br>
+                        
+                        <label for="result">Result/Progress:</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="dec-ant" name="results0" value="dec-ant" onchange="assessment.asEvidencedBy(0)">
+                        <label for="imp-rom">Decreasing antalgic gait</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="inc-gait" name="results1" value="inc-ant" onchange="assessment.asEvidencedBy(1)">
+                        <label for="inc-gait">Increasing tolerance to gait</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="imp-mech" name="results2" value="imp-mech" onchange="assessment.asEvidencedBy(2)">
+                        <label for="imp-mech">Improving gait mechanics</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="inc-safety" name="results3" value="inc-safety" onchange="assessment.asEvidencedBy(3)">
+                        <label for="inc-safety">Increasing gait safety</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="dec-ad" name="results4" value="dec-ad" onchange="assessment.asEvidencedBy(4)">
+                        <label for="dec-ad">Decreasing reliance on AD</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="overhead" name="results5" value="overhead" onchange="assessment.asEvidencedBy(5)">
+                        <label for="overhead">Increasing ability to perform overhead reaching tasks</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="adls" name="results6" value="adls" onchange="assessment.asEvidencedBy(6)">
+                        <label for="adls">Increasing tolerance to ADLs</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="tie-shoes" name="resulst7" value="tie-shoes" onchange="assessment.asEvidencedBy(7)">
+                        <label for="tie-shoes">Improving ability to tie shoes</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="lift" name="results8" value="lift" onchange="assessment.asEvidencedBy(8)"> 
+                        <label for="lift">Improving ability to perform lifting and carrying tasks</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="stairs" name="results9" value="stairs" onchange="assessment.asEvidencedBy(9)">
+                        <label for="stairs">Increased ability to climb stairs</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="dress" name="results10" value="dress" onchange="assessment.asEvidencedBy(10)">
+                        <label for="dress">Increased ability to dress self</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="wash" name="results11" value="wash" onchange="assessment.asEvidencedBy(11)">
+                        <label for="wash">Improved ability to wash self</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="fall-risk" name="results12" value="fall-risk" onchange="assessment.asEvidencedBy(12)">
+                        <label for="fall-risk">Decreased fall risk</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="work-act" name="results13" value="work-act" onchange="assessment.asEvidencedBy(13)">
+                        <label for="work-act">Increased tolerance to work activities</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="sport-mvmt" name="results14" value="sport-mvmt" onchange="assessment.asEvidencedBy(14)">
+                        <label for="sport-mvmt">Improved tolerance to sport-specific movements</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="home-safe" name="results15" value="home-safe" onchange="assessment.asEvidencedBy(15)">
+                        <label for="home-safe">Improved home safety</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="caregiver" name="results16" value="caregiver" onchange="assessment.asEvidencedBy(16)">
+                        <label for="caregiver">Decrased caregiver dependence</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="bed-mob" name="results17" value="bed-mob" onchange="assessment.asEvidencedBy(17)">
+                        <label for="bed-mob">Improved bed mobility</label>
+                        <br>
+                        <br>
+                        <input type="radio" id="xfer" name="results18" value="xfer" onchange="assessment.asEvidencedBy(18)">
+                        <label for="xfer">Improved transfers</label>
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <p>3. What continued impairments does that patient demonstrate?</p>
+
+                        <label for="deficit">Does the patient demonstrate continued impairments that need skilled care?</label>
+                        <input type="radio" id="deficit" name="deficit" value="deficitYes" onchange="assessment.conDeficits()">
+                        <label for="deficitYes">Yes</label>
+                        <input type="radio" id="deficit" name="deficit" value="deficitNo">
+                        <label for="deficitNo">No</label>
+                        
+                        <input type="checkbox" id="strength" name="strength" value="strength" onchange="assessment.contDeficitsList(0)">
+                        <label for="strength">Strength</label>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="checkbox" id="balance-bad" name="balance-bad" value="balance" onchange="assessment.contDeficitsList(1)">
+                        <label for="balance">Balance</label>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="checkbox" id="rom-bad" name="rom-bad" value="ROM" onchange="assessment.contDeficitsList(2)">
+                        <label for="ROM">ROM</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="gait-bad" name="gait-bad" value="gait" onchange="assessment.contDeficitsList(3)">
+                        <label for="gait">Gait</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="safeAD" name="safeAD" value="safeAD" onchange="assessment.contDeficitsList(4)">
+                        <label for="safeAD">Safe AD use</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="proprio" name="proprio" value="proprio" onchange="assessment.contDeficitsList(5)">
+                        <label for="proprio">Proprioception</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="hep-ad" name="hep-ad" value="hep-ad" onchange="assessment.contDeficitsList(6)">
+                        <label for="hep-ad">HEP Adherence</label>
+                        
+                        <br>
+                        <br>
+
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <p>4. What continued functional deficits does the patient demonstrate?</p>
+
+                        <label for="deficit">Does the patient demonstrate continued <em>functional</em> impairments that need skilled care?</label>
+                        <input type="radio" id="func-deficit" name="func-deficit" value="func-deficitYes" onchange="assessment.functDeficits()">
+                        <label for="func-deficitYes">Yes</label>
+                        <input type="radio" id="func-deficit" name="func-deficit" value="func-deficitNo">
+                        <label for="func-deficitNo">No</label>
+
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="gait-safety" name="gait-safety" value="gait-safety" onchange="assessment.funcDeficitsList(0)">
+                        <label for="gait-safety">Gait safety</label>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="checkbox" id="ambulation" name="ambulation" value="ambulation" onchange="assessment.funcDeficitsList(1)">
+                        <label for="ambulation">Ambulation</label>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="checkbox" id="home-safety" name="home-safety" value="home-safety" onchange="assessment.funcDeficitsList(2)">
+                        <label for="home-safety">Home safety</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="fall-risk1" name="fall-risk1" value="fall-risk1" onchange="assessment.funcDeficitsList(3)">
+                        <label for="fall-risk1">Fall risk</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="community" name="community" value="community" onchange="assessment.funcDeficitsList(4)"> 
+                        <label for="community">Community mobility</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="household" name="household" value="household" onchange="assessment.funcDeficitsList(5)">
+                        <label for="household">Household mobilty</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="func-ind" name="func-ind" value="func-ind" onchange="assessment.funcDeficitsList(6)">
+                        <label for="func-ind">Functional independence</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="rts" name="rts" value="rts" onchange="assessment.funcDeficitsList(7)">
+                        <label for="rts">Ability to return to sport</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="work-tasks" name="work-tasks" value="work-tasks" onchange="assessment.funcDeficitsList(8)">
+                        <label for="work-tasks">Ability to perform work tasks</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="adl" name="adl" value="adl" onchange="assessment.funcDeficitsList(9)">
+                        <label for="adl">ADLs</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="bathing" name="bathing" value="bathing" onchange="assessment.funcDeficitsList(10)">
+                        <label for="bathing">Bathing</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="dressing" name="dressing" value="dressing" onchange="assessment.funcDeficitsList(11)">
+                        <label for="dressing">Dressing</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="self-care" name="self-care" value="self-care" onchange="assessment.funcDeficitsList(12)">
+                        <label for="self-care">Self-care</label>
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="checkbox" id="driving" name="driving" value="driving" onchange="assessment.funcDeficitsList(13)">
+                        <label for="driving">Driving</label>
+                        
+                        <br>
+                        <br>
+
+                        <input type="checkbox" id="school" name="school" value="school" onchange="assessment.funcDeficitsList(14)">
+                        <label for="school">School tasks</label>
+                        
+                        <br>
+                        <br>
+                    </div>
+
+                    <div class="soap-note-sub">
+
+                        <p>5. Will the patient benefit from continued skilled PT treatment?</p>
+
+                        <input type="radio" id="yes-rx" name="yes-rx" value="yes-rx" onchange="assessment.contTherapy()">
+                        <label for="yes-rx">Yes</label>
+
+                        <br>
+                        <br>
+
+                        <input type="radio" id="no-rx" name="no-rx" value="no-rx">
+                        <label for="no-rx">No</label>
+                    </div>
+
+                    
+
+            </form>
+
+            <form class="soap-note-section">
+
+                <h3>Plan</h3>
+
+                <input type="radio" id="cont-poc" name="cont-poc" value="cont-poc" onchange="plan.contPOC()">
+                <label for="cont-poc">Continue per POC</label>
+
+                <br>
+                <br>
+
+                <input type="radio" id="add-ex" name="add-ex" value="add-ex">
+                <label for="add ex">Add new exercise next treatment: <input type="text" id="new-ex" name="new-ex" placeholder="type exercise here" onchange="plan.addExercise(this.value)"></label>
+                
+                <br>
+                <br>
+
+                <input type="radio" id="red-freq" name="red-freq" value="red-freq">
+                <label for="red-freq">Reduce treatment frequency to <input type="text" id="frequency-rx" name="frequency-rx" placeholder="type num/week here" onchange="plan.freq(this.value)"> times per week.</label>
+
+                <br>
+                <br>
+
+                <input type="radio" id="trans-ind" name="trans-ind" value="trans-ind" onchange="plan.indTransition()">
+                <label for="trans-ind">Transition to independent next treatment</label>
+
+                <br>
+                <br>
+
+                <p>D/c in <input type="text" id="number-visit" name="number-visits" placeholder="type num visits here" onchange="plan.dcNext(this.value)"></p>
+
+            </form>
+        
+        <button id="submit">Submit!</button>
+
+            <textarea id="result"></textarea>
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+    <script src="script.js" charset="utf-8"></script>
+</html>
