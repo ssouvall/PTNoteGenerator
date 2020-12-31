@@ -1,44 +1,144 @@
 html {
-    background-color: #f8f1f1 ;
+    background-image: url(rough-horn-2146181_1920.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
 }
 
-h1 {
-    color: black;
-    text-align: center;
+h3 {
+    text-align: left;
+    margin: 0px auto 25px auto;
+    font-weight: bolder;
+    font-size: 1.5rem;
 }
-
-.soap-note-section {
-    background-color: #5eaaa8;
+#soap-note-section1,
+#soap-note-section2,
+#soap-note-section3,
+#soap-note-section4,
+#soap-note-section5,
+#soap-note-section6,
+#soap-note-section7,
+#soap-note-section8,
+#soap-note-section9,
+#soap-note-section10,
+#soap-note-section11,
+#soap-note-section12,
+#results-text {
+    background-color: rgba(0, 0, 0, 90%);
     text-align: left;
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 5%;
     margin-bottom: 5%;
-    padding: 5%;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 5px;
+    color: #f8f8ff;
+}
+
+
+#soap-note-section1 {
+    display: block;
+}
+
+#soap-note-section2,
+#soap-note-section3,
+#soap-note-section4,
+#soap-note-section5,
+#soap-note-section6,
+#soap-note-section7,
+#soap-note-section8,
+#soap-note-section9,
+#soap-note-section10,
+#soap-note-section11,
+#soap-note-section12,
+#result,
+#results-text,
+#start-over {
+    display: none;
 }
 
 #result {
-    height: 500px;
-    width: 70%;
-    display: block;
-    margin: 60px auto 60px auto;
+    height: 300px;
+    width: 95%;
     padding: 20px;
-}
-
-#submit {
-    width: 20%;
-    height: 50px;
-    font-size: 1.25rem;
-    border-radius: 20px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #5eaaa8;
+    background-color: rgba(0, 0, 0, 90%);
     border-style: none;
     color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
 }
 
+.next1:hover,
+.next2:hover,
+.next3:hover,
+.next4:hover,
+.next5:hover,
+.next6:hover,
+.next7:hover,
+.next8:hover,
+.next9:hover,
+.next10:hover,
+.next11:hover,
+#start-over:hover,
 #submit:hover {
     background: #db6400;
+}
+
+input, select {
+    margin: 10px;
+    background: transparent;
+    color: #c5ecfd;
+    border: 0;
+    border-bottom: 2px solid #cfecfd;
+    padding: 10px;
+}
+
+.next1,
+.next2,
+.next3,
+.next4,
+.next5,
+.next6,
+.next7,
+.next8,
+.next9,
+.next10,
+.next11,
+#start-over,
+#submit {
+    background-color: #3797a4;
+    height: 50px;
+    width: 300px;
+    border-radius: 20px;
+    border-style: none;
+    color: #cfecfd;
+    font-size: 1.5rem;
+}
+
+.next1 {
+    margin-left: 50px;
+    margin-top: 70px;
+}
+
+.next2 {
+    margin-left: 55%;
+}
+
+.next3 {
+    margin-left: 65%;
+}
+
+#start-over {
+    position: relative;
+    bottom: 50px;
+    left: 40%
+}
+
+.pt-helps {
+    margin: 30px;
 }

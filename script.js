@@ -572,7 +572,82 @@ function aggravation(value) {
     subjArray.push(value)
 }
 
-document.getElementById("submit").addEventListener("click", function displayNote () {
+/*document.getElementById("submit").addEventListener("click", function displayNote () {
     var noteOutput = subjArray.join(' ') + '\n' + '\n' + assessmentArray.join(' ') + '\n' + '\n' + planArray.join(' ');
     document.getElementById('result').innerHTML = noteOutput;
-});
+   
+});*/
+
+function disappearSectionOne() {
+    document.getElementById("soap-note-section1").style.display = "none";
+    document.getElementById("soap-note-section2").style.display = "block";
+}
+
+function disappearSectionTwo() {
+    document.getElementById("soap-note-section2").style.display = "none";
+    document.getElementById("soap-note-section3").style.display = "block";
+}
+
+function disappearSectionThree() {
+    document.getElementById("soap-note-section3").style.display = "none";
+    document.getElementById("soap-note-section4").style.display = "block";
+}
+
+function disappearSectionFour() {
+    document.getElementById("soap-note-section4").style.display = "none";
+    document.getElementById("soap-note-section5").style.display = "block";
+}
+
+function disappearSectionFive() {
+    document.getElementById("soap-note-section5").style.display = "none";
+    document.getElementById("soap-note-section6").style.display = "block";
+}
+
+function disappearSectionSix() {
+    document.getElementById("soap-note-section6").style.display = "none";
+    document.getElementById("soap-note-section7").style.display = "block";
+}
+
+function disappearSectionSeven() {
+    document.getElementById("soap-note-section7").style.display = "none";
+    document.getElementById("soap-note-section8").style.display = "block";
+}
+
+function disappearSectionEight() {
+    document.getElementById("soap-note-section8").style.display = "none";
+    document.getElementById("soap-note-section9").style.display = "block";
+}
+
+function disappearSectionNine() {
+    document.getElementById("soap-note-section9").style.display = "none";
+    document.getElementById("soap-note-section10").style.display = "block";
+}
+
+function disappearSectionTen() {
+    document.getElementById("soap-note-section10").style.display = "none";
+    document.getElementById("soap-note-section11").style.display = "block";
+}
+
+function disappearSectionEleven() {
+    document.getElementById("soap-note-section11").style.display = "none";
+    document.getElementById("soap-note-section12").style.display = "block";
+}
+
+function disappearSectionTwelve() {
+    document.getElementById("soap-note-section12").style.display = "none";
+    document.getElementById("results-text").style.display = "block";
+    document.getElementById("result").style.display = "block";
+    document.getElementById("start-over").style.display = "block";
+}
+
+function displayResults() {
+    var resultBlock = document.getElementById("result").style.display;
+    var noteOutput = subjArray.join(' ') + '\n' + '\n' + assessmentArray.join(' ') + '\n' + '\n' + planArray.join(' ');
+    if(resultBlock == "block") {
+        document.getElementById('result').innerHTML = noteOutput;
+    }
+}
+
+function startOver() {
+    location.reload();
+}
